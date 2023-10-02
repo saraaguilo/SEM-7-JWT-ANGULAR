@@ -7,11 +7,9 @@ import { AuthService } from '../services/auth.service';
   providedIn: 'root'
 })
 export class TokenInterceptorService implements HttpInterceptor {
-
   constructor(
     private authService: AuthService
   ) { }
-
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
 
@@ -23,7 +21,6 @@ export class TokenInterceptorService implements HttpInterceptor {
       })
       return next.handle(tokenizeReq)
     }
-
     return next.handle(req)
   }
   }

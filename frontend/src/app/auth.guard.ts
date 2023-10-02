@@ -6,14 +6,12 @@ import {Router} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-// Se encarga de ver si hay un token o no si no lo hay te devuelve a signin para que obtengas el token
 export class AuthGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
     private router: Router
   ) { }
-
   canActivate(): boolean {
     if (this.authService.loggedIn()) {
       return true;

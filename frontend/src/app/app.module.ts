@@ -9,6 +9,8 @@ import { PrivateTasksComponent } from './components/private-tasks/private-tasks.
 import {HttpClientModule,HTTP_INTERCEPTORS ,HttpRequest, HttpHandler, HttpEvent} from '@angular/common/http';
 import{AuthGuard} from './auth.guard';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { PublicTaskComponent } from './components/public-task/public-task.component';
+
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
     AppComponent,
     SignupComponent,
     SigninComponent,
-    PrivateTasksComponent
+    PrivateTasksComponent,
+    PublicTaskComponent,
+
   ],
   imports: [
     BrowserModule,

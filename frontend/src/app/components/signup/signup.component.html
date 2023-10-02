@@ -15,6 +15,15 @@
                     <div class="form-group">
                         <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
                     </div>
+                    <div class="form-check">
+                        <input type="radio" name="rol" [value]="'admin'" (change)="updateRol('admin')" class="form-check-input" id="adminCheckbox">
+                        <label class="form-check-label" for="adminCheckbox">Admin</label>
+                      </div>
+                      <div class="form-check">
+                        <input type="radio" name="rol" [value]="'client'" (change)="updateRol('client')" class="form-check-input" id="clientCheckbox">
+                        <label class="form-check-label" for="clientCheckbox">Client</label>
+                      </div>
+                         
                     <button type="submit" class="btn btn-primary btn-block">
                         SignUp
                     </button>

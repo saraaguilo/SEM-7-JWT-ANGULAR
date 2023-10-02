@@ -5,7 +5,7 @@ import {PrivateTasksComponent} from './components/private-tasks/private-tasks.co
 import {SignupComponent} from './components/signup/signup.component'
 import {SigninComponent} from './components/signin/signin.component'
 import{AuthGuard} from './auth.guard';
-
+import {PublicTaskComponent} from './components/public-task/public-task.component'
 
 const routes: Routes = [
   {
@@ -14,7 +14,7 @@ const routes: Routes = [
     pathMatch:'full'
   },
   {
-    path:'me',
+    path:'private',
     component: PrivateTasksComponent,
      canActivate: [AuthGuard]
   },
@@ -25,9 +25,12 @@ const routes: Routes = [
   {
     path:'signin',
     component:SigninComponent
+  },
+  {
+    path:'public',
+    component:PublicTaskComponent,
+    canActivate: [AuthGuard]
   }
-
-
 ];
 
 @NgModule({
