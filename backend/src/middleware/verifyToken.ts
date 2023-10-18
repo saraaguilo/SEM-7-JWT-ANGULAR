@@ -17,7 +17,14 @@ export async function verifyToken(req: AuthenticatedRequest, res: Response, next
   try {
     const decoded: any = jwt.verify(token, config.secret);
     req.userId = decoded.id;
-    next();
+
+    // Comprobar el rol del usuario y sus permisos aquí
+    if (decoded.rol === 'admin') {
+      // El usuario tiene permisos de administrador
+      next();
+    } else {
+      return res.status(403).json({ message: 'Acceso denegado: No tienes los permisos necesarios.' });
+    }
   } catch (error) {
     return res.status(401).json({
       auth: false,

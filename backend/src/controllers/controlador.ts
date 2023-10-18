@@ -14,7 +14,7 @@ interface AuthenticatedRequest extends Request {
     userId?: string;
   }
 
-export async function signin(req: Request, res: Response): Promise<Response> {
+  export async function signin(req: Request, res: Response): Promise<Response> {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
     if (!user) {
@@ -24,11 +24,14 @@ export async function signin(req: Request, res: Response): Promise<Response> {
     if (!validPassword) {
       return res.status(401).json({ auth: false, token: null });
     }
-    const token = jwt.sign({ id: user._id, rol: user.rol}, config.secret, {
+  
+    // Generar un nuevo token con el rol del usuario
+    const token = jwt.sign({ id: user._id, rol: user.rol }, config.secret, {
       expiresIn: 60 * 60 * 24,
     });
+  
     return res.json({ auth: true, token });
-}
+  }
 
 export async function signup(req: Request, res: Response): Promise<Response> {
     const { username, email, password,rol } = req.body;
